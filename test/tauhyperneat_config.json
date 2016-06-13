@@ -1,0 +1,48 @@
+{
+	"n_AditionalCPPNInputs": 1,
+	"AditionalCPPNInputs":
+	[
+		"EUCLIDIANDISTANCE"
+	],
+	"connection_threshold": 0.00833,
+	"Substrate":
+	{
+		"n_layers": 3,
+		"coordenate_type": 2,
+		"node_function" : "SIGMOID",
+		"buffer_size": 10,
+		"Layers":
+		[
+			{
+				"n_nodes": 4,
+				"nodes_info":
+				[
+					[ 0, 0, 0.7071, 0.7071 ],
+					[ 0, 1, -0.7071, 0.7071 ],
+					[ 0, 2, -0.7071, -0.7071 ],
+					[ 0, 3, 0.7071, -0.7071 ]
+				]
+			},
+			{
+				"n_nodes": 4,
+				"nodes_info":
+				[
+					[ 1, -1, 0.7071, 0.7071 ],
+					[ 1, -1, -0.7071, 0.7071 ],
+					[ 1, -1, -0.7071, -0.7071 ],
+					[ 1, -1, 0.7071, -0.7071 ]
+				]
+			},
+			{
+				"n_nodes": 4,
+				"nodes_info":
+				[
+					[ 2, 0, 0.7071, 0.7071 ],
+					[ 2, 1, -0.7071, 0.7071 ],
+					[ 2, 2, -0.7071, -0.7071 ],
+					[ 2, 3, 0.7071, -0.7071 ]
+				]
+			}
+		]
+	}	
+}
