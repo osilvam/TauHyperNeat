@@ -7,7 +7,14 @@ using namespace ANN_USM;
 
 double TauHyperNeat::scaleWeight(double weight)
 {
-	return (double)(max_connection_weight/(1.0 - connection_threshold))*(weight - connection_threshold);
+	if (weight > 0.0)
+	{
+		return (double)(max_connection_weight/(1.0 - connection_threshold))*(weight - connection_threshold);	
+	}else
+	{
+		return (double)((max_connection_weight/(1.0 - connection_threshold))*(weight + 1) - max_connection_weight);
+	}
+	
 }
 
 TauHyperNeat::TauHyperNeat(vector < double * > inputs, vector < double * > outputs, char * config_file)
@@ -134,7 +141,7 @@ bool TauHyperNeat::createSubstrateConnections(Genetic_Encoding * organism)
 				cppn_output = organism->eval(cppn_inputs);
 
 				if(abs(cppn_output.at(i*2)) > connection_threshold)
-					(substrate->GetSpatialNode(i+1,k))->AddInputToNode(substrate->GetSpatialNode(i,j), scaleWeight(abs(cppn_output.at(i*2))), cppn_output.at(i*2 + 1));				
+					(substrate->GetSpatialNode(i+1,k))->AddInputToNode(substrate->GetSpatialNode(i,j), scaleWeight(cppn_output.at(i*2)), cppn_output.at(i*2 + 1));				
 			}
 	}		
 	
