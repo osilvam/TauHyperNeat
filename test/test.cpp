@@ -42,7 +42,7 @@ int main()
 
 	clog << endl;
 
-	tauhyperneat.printConnectionFile((char*)"genetic_encoding");
+	tauhyperneat.printConnectionFile((char*)"genetic_encoding", (char*)"Connections.txt");
 
 	
 	return 0;

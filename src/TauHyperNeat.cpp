@@ -166,7 +166,7 @@ bool TauHyperNeat::evaluateSubstrateConnections()
 	return true;
 }
 
-void TauHyperNeat::printConnectionFile(Genetic_Encoding * organism)
+void TauHyperNeat::printConnectionFile(Genetic_Encoding * organism, const char fileName[])
 {
 	if(!createSubstrateConnections(organism))
 	{
@@ -174,7 +174,7 @@ void TauHyperNeat::printConnectionFile(Genetic_Encoding * organism)
 		return;
 	}
 
-	ofstream myfile ("TauHyperNeat_Connections.txt");
+	ofstream myfile (fileName);
 
 	if(myfile.is_open())
 	{
@@ -182,7 +182,7 @@ void TauHyperNeat::printConnectionFile(Genetic_Encoding * organism)
 	}
 	else
 	{
-		cerr << "TAUHYPERNEAT ERROR:\tUnable to create the file: TauHyperNeat_Connections.txt" << endl;
+		cerr << "TAUHYPERNEAT ERROR:\tUnable to create the file: " << fileName << endl;
 		return;
 	}
 
@@ -191,12 +191,12 @@ void TauHyperNeat::printConnectionFile(Genetic_Encoding * organism)
 	clog << "TAUHYPERNEAT:\tTauHyperNeat connection file was printed successfully" << endl;
 }
 
-void TauHyperNeat::printConnectionFile(char * path)
+void TauHyperNeat::printConnectionFile(char * path, const char fileName[])
 {
 	Genetic_Encoding * organism = new Genetic_Encoding();
 	organism->load(path);
 
-	printConnectionFile(organism);
+	printConnectionFile(organism, fileName);
 }
 
 #endif

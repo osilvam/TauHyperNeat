@@ -81,13 +81,13 @@ namespace ANN_USM{
 		 * \brief This functions allows obtain the file with th information of all conections of all substrate nodes.
 		 * \param organism Organism of CPPN-NEAT that will create connections in the substrate.
 		 */
-		void printConnectionFile(Genetic_Encoding * organism);
+		void printConnectionFile(Genetic_Encoding * organism, const char fileName[] = "TauHyperNeat_Connections.txt");
 
 		/**
 		 * \brief This functions allows obtain the file with th information of all conections of all substrate nodes.
 		 * \param Path to the organism of CPPN-NEAT that will create connections in the substrate.
 		 */
-		void printConnectionFile(char * path);
+		void printConnectionFile(char * path, const char fileName[] = "TauHyperNeat_Connections.txt");
 	};
 }
 #endif
