@@ -5,6 +5,7 @@
 		"EUCLIDIANDISTANCE"
 	],
 	"connection_threshold": 0.00833,
+	"max_connection_weight": 0.25,
 	"Substrate":
 	{
 		"n_layers": 3,

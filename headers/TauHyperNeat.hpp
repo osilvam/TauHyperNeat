@@ -11,7 +11,7 @@
 #include <fstream>
 #include <sstream>
 
-#define TAUHYPERNEAT_DATANUMBER 4
+#define TAUHYPERNEAT_DATANUMBER 5
 
 using namespace std;
 /**
@@ -30,9 +30,12 @@ namespace ANN_USM{
 
 		//Threshold that determine the creation for an connection
 		double connection_threshold;
+		double max_connection_weight;
 
 		//Indicated if the connections were created successfully
 		bool okConnections;
+
+		double scaleWeight(double weight);
 
 	public:
 

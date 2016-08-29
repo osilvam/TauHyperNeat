@@ -5,6 +5,7 @@
 
 #define INPUTS 4
 #define OUTPUTS 4
+#define ITER 20
 
 using namespace std;
 using namespace ANN_USM;
@@ -28,7 +29,16 @@ int main()
 
 	tauhyperneat.createSubstrateConnections((char*)"genetic_encoding");
 
-	tauhyperneat.evaluateSubstrateConnections();
+	for(int i = 0; i < ITER; i++)
+	{
+		tauhyperneat.evaluateSubstrateConnections();
+
+		for(int j  = 0; j < INPUT; j++)
+		{
+			*inputVector.at(j) = *outputVector.at(j);
+		}
+	}	
+
 
 	clog << endl;
 

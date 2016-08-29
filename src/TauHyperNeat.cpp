@@ -5,6 +5,11 @@
 
 using namespace ANN_USM;
 
+double TauHyperNeat::scaleWeight(double weight)
+{
+	return (double)(max_connection_weight/(1.0 - connection_threshold))*(weight - connection_threshold);
+}
+
 TauHyperNeat::TauHyperNeat(vector < double * > inputs, vector < double * > outputs, char * config_file)
 {
 	// ============================= READING JSON FILE ============================= //
@@ -68,6 +73,14 @@ void TauHyperNeat::hyperNeatJsonDeserialize(string hyperneat_info)
 		connection_threshold = atof(pch);
 		pch = strtok(NULL, delimeters);
 	}
+	if(!strcmp(pch,(char *)"max_connection_weight"))
+	{
+		dataNumber++;
+
+		pch = strtok(NULL, delimeters);
+		max_connection_weight = atof(pch);
+		pch = strtok(NULL, delimeters);
+	}
 	if (!strcmp(pch,(char *)"Substrate"))
 	{	
 		dataNumber++;
@@ -121,7 +134,7 @@ bool TauHyperNeat::createSubstrateConnections(Genetic_Encoding * organism)
 				cppn_output = organism->eval(cppn_inputs);
 
 				if(abs(cppn_output.at(i*2)) > connection_threshold)
-					(substrate->GetSpatialNode(i+1,k))->AddInputToNode(substrate->GetSpatialNode(i,j), cppn_output.at(i*2), cppn_output.at(i*2 + 1));				
+					(substrate->GetSpatialNode(i+1,k))->AddInputToNode(substrate->GetSpatialNode(i,j), scaleWeight(abs(cppn_output.at(i*2))), cppn_output.at(i*2 + 1));				
 			}
 	}		
 	
