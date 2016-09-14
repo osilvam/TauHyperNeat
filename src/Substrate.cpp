@@ -103,7 +103,7 @@ char * Substrate::SJsonDeserialize(char * substrate_info)
 						coordenates.push_back(atof(substrate_info));
 					}			
 
-					aux1.push_back(new SpatialNode(node_type,i,coordenates, node_function, max_buffer_size));
+					aux1.push_back(new SpatialNode(node_type, i, j, coordenates, node_function, max_buffer_size));
 
 					if(node_type == 0)
 						aux1.at(j)->SetInputToInputNode(inputs.at(IO_id), IO_id);

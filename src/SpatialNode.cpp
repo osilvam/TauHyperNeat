@@ -5,10 +5,11 @@
 
 using namespace ANN_USM;
 
-SpatialNode::SpatialNode(int node_type, int sheet_id, vector < double > coordenates, char * node_function, int buffer_size)
+SpatialNode::SpatialNode(int node_type, int sheet_id, int node_id, vector < double > coordenates, char * node_function, int buffer_size)
 {
 	this->node_type = node_type;
-	this->sheet_id = sheet_id;
+	this->sheet_id = sheet_id;	
+	this->node_id = node_id;
 	this->coordenates = coordenates;
 	this->buffer_size = buffer_size;
 
@@ -126,6 +127,11 @@ int SpatialNode::GetSheetNodeId()
 	return sheet_id;
 }
 
+int SpatialNode::GetNodeId()
+{
+	return node_id;
+}
+
 double SpatialNode::GetOuput()
 {
 	return *output;
@@ -166,7 +172,7 @@ string SpatialNode::getConnectionString()
 	if(!inputs_nodes.empty())
 	{
 		for(int i = 0; i < (int)inputs_nodes.size(); i++)
-			connections << "\t\tConnection " << i << ":\tWeight\t" << inputs_weight.at(i) << "\tBuffer_Size\t" << output_buffer.at(i).size() << endl;
+			connections << "\t\tConnection " << inputs_nodes.at(i)->GetNodeId() << ":\tWeight\t" << inputs_weight.at(i) << "\tBuffer_Size\t" << output_buffer.at(i).size() << endl;
 	}
 	else if (node_type == 0)
 		connections << "\t\tThis is an input node" << endl;

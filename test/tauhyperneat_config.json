@@ -4,7 +4,7 @@
 	[
 		"EUCLIDIANDISTANCE"
 	],
-	"connection_threshold": 0.00833,
+	"connection_threshold": 0.5,
 	"max_connection_weight": 0.25,
 	"Substrate":
 	{
